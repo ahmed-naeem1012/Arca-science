@@ -606,6 +606,3 @@ For questions or issues:
 
 **Built for the KOL Analytics Technical Test**  
 **Stack**: React 18 · TypeScript · TailwindCSS · FastAPI · Python · Pydantic  
-**Date**: December 2024  
-**Status**: Complete and Ready for Evaluation
-
