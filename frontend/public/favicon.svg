@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#1a4d7a" stroke="#2c7ab8" stroke-width="2"/>
+  
+  <!-- Activity pulse line (representing analytics) -->
+  <path d="M 20 50 L 30 50 L 35 30 L 42 70 L 48 40 L 55 55 L 60 50 L 80 50" 
+        fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Small circles on the pulse line -->
+  <circle cx="35" cy="30" r="3" fill="#4ade80"/>
+  <circle cx="42" cy="70" r="3" fill="#4ade80"/>
+  <circle cx="48" cy="40" r="3" fill="#4ade80"/>
+  
+  <!-- Small medical cross in top right -->
+  <g transform="translate(70, 25)">
+    <rect x="-2" y="-6" width="4" height="12" fill="#60a5fa" rx="1"/>
+    <rect x="-6" y="-2" width="12" height="4" fill="#60a5fa" rx="1"/>
+  </g>
+</svg>
+

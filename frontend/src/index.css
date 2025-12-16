@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KOL Analytics Dashboard - Medical/Pharma Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Medical/Pharma Color Palette */
+    --background: 210 20% 98%;
+    --foreground: 220 40% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+
+    /* Deep Navy Primary */
+    --primary: 220 60% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Teal Secondary */
+    --secondary: 175 35% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Soft backgrounds */
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 15% 46%;
+
+    /* Subtle cyan accent */
+    --accent: 190 50% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 91%;
+    --input: 214 20% 91%;
+    --ring: 220 60% 20%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 50% 14%;
+    --sidebar-foreground: 210 30% 85%;
+    --sidebar-primary: 175 35% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 45% 20%;
+    --sidebar-accent-foreground: 210 30% 90%;
+    --sidebar-border: 220 40% 20%;
+    --sidebar-ring: 175 35% 55%;
+
+    /* Chart colors */
+    --chart-1: 220 60% 35%;
+    --chart-2: 175 40% 45%;
+    --chart-3: 190 45% 50%;
+    --chart-4: 260 30% 55%;
+    --chart-5: 220 35% 50%;
+
+    /* Custom tokens */
+    --kpi-positive: 160 50% 40%;
+    --kpi-negative: 0 55% 50%;
+    --surface-elevated: 0 0% 100%;
+
+    /* AI-native accent colors */
+    --ai-accent: 260 60% 58%;
+    --ai-accent-subtle: 260 40% 96%;
+    --ai-surface: 260 30% 97%;
+    --ai-border: 260 25% 90%;
+    --ai-glow: 260 70% 65%;
+  }
+
+  .dark {
+    --background: 220 45% 8%;
+    --foreground: 210 30% 95%;
+
+    --card: 220 45% 12%;
+    --card-foreground: 210 30% 95%;
+
+    --popover: 220 45% 12%;
+    --popover-foreground: 210 30% 95%;
+
+    --primary: 175 40% 55%;
+    --primary-foreground: 220 45% 10%;
+
+    --secondary: 220 35% 25%;
+    --secondary-foreground: 210 30% 95%;
+
+    --muted: 220 35% 18%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 190 45% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 35% 22%;
+    --input: 220 35% 22%;
+    --ring: 175 40% 55%;
+
+    --sidebar-background: 220 50% 8%;
+    --sidebar-foreground: 210 25% 80%;
+    --sidebar-primary: 175 40% 55%;
+    --sidebar-primary-foreground: 220 45% 10%;
+    --sidebar-accent: 220 40% 15%;
+    --sidebar-accent-foreground: 210 25% 90%;
+    --sidebar-border: 220 35% 15%;
+    --sidebar-ring: 175 40% 55%;
+
+    --surface-elevated: 220 45% 14%;
+
+    /* AI-native accent colors (dark) */
+    --ai-accent: 260 55% 65%;
+    --ai-accent-subtle: 260 40% 20%;
+    --ai-surface: 260 30% 15%;
+    --ai-border: 260 25% 25%;
+    --ai-glow: 260 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  .card-elevated {
+    @apply bg-card rounded-lg border border-border shadow-sm transition-all duration-200;
+  }
+
+  .card-interactive {
+    @apply card-elevated hover:shadow-md hover:border-border/80 cursor-pointer;
+  }
+
+  .kpi-card {
+    @apply bg-card rounded-lg border border-border p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/20 relative overflow-hidden;
+  }
+
+  .kpi-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .kpi-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .sidebar-nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
+  }
+
+  .sidebar-nav-item-active {
+    @apply bg-sidebar-accent text-sidebar-primary font-medium;
+  }
+
+  .table-header-cell {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+
+  .table-body-cell {
+    @apply px-4 py-4 text-sm text-foreground;
+  }
+
+  .table-row-interactive {
+    @apply hover:bg-muted/50 transition-colors cursor-pointer relative;
+  }
+
+  .table-row-interactive::after {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-0.5 bg-primary scale-y-0 transition-transform origin-top;
+  }
+
+  .table-row-interactive:hover::after {
+    @apply scale-y-100;
+  }
+
+  .filter-input {
+    @apply h-10 rounded-md border border-input bg-background px-3 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  /* AI-native components */
+  .ai-insight-panel {
+    @apply relative;
+  }
+
+  .ai-insight-panel::before {
+    content: '';
+    @apply absolute -inset-px rounded-lg bg-gradient-to-r from-ai-accent/20 via-transparent to-ai-accent/10 -z-10;
+  }
+
+  .ai-glow-icon {
+    @apply flex items-center justify-center w-8 h-8 rounded-lg bg-ai-surface text-ai-accent;
+    box-shadow: 0 0 20px hsl(var(--ai-glow) / 0.15);
+  }
+
+  .ai-affordance {
+    @apply relative;
+  }
+
+  .ai-affordance::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 right-0 h-px bg-ai-accent scale-x-0 transition-transform origin-left;
+  }
+
+  .ai-affordance:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Chart annotation */
+  .chart-annotation {
+    @apply absolute px-2 py-1 text-xs font-medium rounded-md bg-card border border-border shadow-sm;
+    @apply animate-fade-in;
+  }
+
+  .chart-annotation-ai {
+    @apply bg-ai-surface border-ai-border text-ai-accent;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  @keyframes pulseSoft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Micro-interactions */
+  .hover-lift {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-0.5;
+  }
+
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+}
